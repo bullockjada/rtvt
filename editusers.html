@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Edit Users</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: linear-gradient(0deg, rgba(66,107,153,1) 0%, rgba(255,255,255,1) 74%);
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+}
+table, td {
+  border: 1px solid black;
+}
+
+/* Style the tab */
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+
+/* Style the header */
+header {
+  background-color: #297EFF;
+  padding: 20px;
+  text-align: center;
+  font-size: 35px;
+  color: white;
+}
+
+/* Container for flexboxes */
+section {
+  display: -webkit-flex;
+  display: flex;
+}
+
+/* Style the navigation menu */
+nav {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  background: #ccc;
+  padding: 20px;
+}
+
+/* Style the list inside the menu */
+nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+/* Style the content */
+article {
+  -webkit-flex: 3;
+  -ms-flex: 3;
+  flex: 3;
+  background-color: #f1f1f1;
+  padding: 10px;
+}
+canvas {
+    border:1px solid #d3d3d3;
+    background-color: #f1f1f1;
+}
+/* Create three unequal columns that floats next to each other */
+.column {
+  float: left;
+  padding: 10px;
+}
+
+/* Left and right column */
+.column.side {
+  width: 25%;
+  text-align: center;
+}
+
+/* Middle column */
+.column.middle {
+  width: 50%;
+  text-align: center;
+}
+
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
+/*responsive layout - makes the three columns stack on top of each other instead of next to each other */
+
+/*-------------------------------------------------------*/
+
+/* Style the footer */
+footer {
+  background-color: #777;
+  padding: 10px;
+  text-align: center;
+  color: white;
+}
+
+/* Responsive layout - makes the menu and the content (inside the section) sit on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  section {
+    -webkit-flex-direction: column;
+    flex-direction: column;
+  }
+  .column.side, .column.middle {
+    width: 100%;
+  }
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+tr:hover {background-color:#f5f5f5;}
+th {
+  background-color: #DCDCDC;
+  color: black;
+}
+
+#empTable {
+  border-collapse: collapse;
+  width: 50;
+
+}
+
+.cont {
+  width:50;
+  position: relative;
+  margin: auto;
+}
+
+.table{
+  border-collapse: collapse;
+  width: 25%;
+  position: relative;
+  margin: auto;
+}
+
+#myTable{
+  border-collapse: collapse;
+  width: 100%;
+  position: relative;
+  margin: auto;
+  height: auto;
+}
+
+</style>
+
+
+</head>
+<body>
+<header>
+  <h2 style="color:#D3D3D3">Red Team Vetting Tool</h2>
+</header>
+
+<body onload="createTable()">
+
+<div class="row">
+  <div class="column side">
+    <h2>Add/Delete Users</h2>
+    <p>
+        <input type="button" id="addRow" value="Add New Row" onclick="addRow()" />
+    </p>
+
+    <!--THE CONTAINER WHERE WE'll ADD THE DYNAMIC TABLE-->
+    <div id="cont"></div>
+<br>
+<br>
+
+  </div>
+
+  <div class="column middle">
+<br><br><br>
+
+   <p><input type="button" id="bt" value="Submit Data" onclick="submit()" /></p>
+	<br>
+  </div>
+
+  <div class = "column side">
+    <h2>Permissions</h2>
+<br><br>
+	<table id="myTable">
+	  <tr>
+	    <th>First Name</th>
+	    <th>Last Name</th>
+	    <th>Role</th>
+	  </tr>
+	  <tr>
+	    <td>Peter</td>
+	    <td>Griffin</td>
+	    <td contenteditable="true">RWX</td>
+	  </tr>
+	  <tr>
+	    <td>Lois</td>
+	    <td>Griffin</td>
+	    <td contenteditable="true">RWX</td>
+	  </tr>
+	  <tr>
+	    <td>Joe</td>
+	    <td>Swanson</td>
+	    <td contenteditable="true">RWX</td>
+	  </tr>
+	  <tr>
+	    <td>Cleveland</td>
+	    <td>Brown</td>
+	    <td contenteditable="true">RWX</td>
+	  </tr>
+	</table>
+	<br>
+     <button type="button" onclick="myFunction()">Submit</button>
+  </div>
+</div>
+
+
+<footer>
+  <p>Product of AAMU</p>
+</footer>
+
+
+<script>
+    // ARRAY FOR HEADER.
+    var arrHead = new Array();
+    arrHead = ['', 'First Name', 'Last name', 'Role'];      // SIMPLY ADD OR REMOVE VALUES IN THE ARRAY FOR TABLE HEADERS.
+
+    // FIRST CREATE A TABLE STRUCTURE BY ADDING A FEW HEADERS AND
+    // ADD THE TABLE TO YOUR WEB PAGE.
+    function createTable() {
+        var empTable = document.createElement('table');
+        empTable.setAttribute('id', 'empTable');            // SET THE TABLE ID.
+
+        var tr = empTable.insertRow(-1);
+
+        for (var h = 0; h < arrHead.length; h++) {
+            var th = document.createElement('th');          // TABLE HEADER.
+            th.innerHTML = arrHead[h];
+            tr.appendChild(th);
+        }
+
+        var div = document.getElementById('cont');
+        div.appendChild(empTable);    // ADD THE TABLE TO YOUR WEB PAGE.
+    }
+
+    // ADD A NEW ROW TO THE TABLE.s
+    function addRow() {
+        var empTab = document.getElementById('empTable');
+
+        var rowCnt = empTab.rows.length;        // GET TABLE ROW COUNT.
+        var tr = empTab.insertRow(rowCnt);      // TABLE ROW.
+        tr = empTab.insertRow(rowCnt);
+
+        for (var c = 0; c < arrHead.length; c++) {
+            var td = document.createElement('td');          // TABLE DEFINITION.
+            td = tr.insertCell(c);
+
+            if (c == 0) {           // FIRST COLUMN.
+                // ADD A BUTTON.
+                var button = document.createElement('input');
+
+                // SET INPUT ATTRIBUTE.
+                button.setAttribute('type', 'button');
+                button.setAttribute('value', 'Remove');
+
+                // ADD THE BUTTON's 'onclick' EVENT.
+                button.setAttribute('onclick', 'removeRow(this)');
+
+                td.appendChild(button);
+            }
+            else {
+                // CREATE AND ADD TEXTBOX IN EACH CELL.
+                var ele = document.createElement('input');
+                ele.setAttribute('type', 'text');
+                ele.setAttribute('value', '');
+
+                td.appendChild(ele);
+            }
+        }
+    }
+
+    // DELETE TABLE ROW.
+    function removeRow(oButton) {
+        var empTab = document.getElementById('empTable');
+        empTab.deleteRow(oButton.parentNode.parentNode.rowIndex);       // BUTTON -> TD -> TR.
+    }
+
+    // EXTRACT AND SUBMIT TABLE DATA.
+    function submit() {
+        var myTab = document.getElementById('empTable');
+        var values = new Array();
+
+        // LOOP THROUGH EACH ROW OF THE TABLE.
+        for (row = 1; row < myTab.rows.length - 1; row++) {
+            for (c = 0; c < myTab.rows[row].cells.length; c++) {   // EACH CELL IN A ROW.
+
+                var element = myTab.rows.item(row).cells[c];
+                if (element.childNodes[0].getAttribute('type') == 'text') {
+                    values.push("'" + element.childNodes[0].value + "'");
+                }
+            }
+        }
+
+        // SHOW THE RESULT IN THE CONSOLE WINDOW.
+        console.log(values);
+    }
+</script>
+
+</body>
+</html>

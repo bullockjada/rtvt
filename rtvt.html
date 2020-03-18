@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Login Page</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+    background: linear-gradient(0deg, rgba(66,107,153,1) 0%, rgba(255,255,255,1) 74%);
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+}
+
+/* Style the tab */
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+
+/* Style the header */
+header {
+  background-color: #297EFF;
+  padding: 20px;
+  text-align: center;
+  font-size: 35px;
+  color: white;
+}
+
+/* Container for flexboxes */
+section {
+  display: -webkit-flex;
+  display: flex;
+}
+
+/* Style the navigation menu */
+nav {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  background: #ccc;
+  padding: 20px;
+}
+
+/* Style the list inside the menu */
+nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+/* Style the content */
+article {
+  -webkit-flex: 3;
+  -ms-flex: 3;
+  flex: 3;
+  background-color: #f1f1f1;
+  padding: 10px;
+}
+canvas {
+    border:1px solid #d3d3d3;
+    background-color: #f1f1f1;
+}
+/* Create three unequal columns that floats next to each other */
+.column {
+  float: left;
+  padding: 10px;
+}
+
+/* Left and right column */
+.column.side {
+  width: 25%;
+  text-align: center;
+}
+
+/* Middle column */
+.column.middle {
+  width: 50%;
+  text-align: center;
+}
+
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
+/*responsive layout - makes the three columns stack on top of each other instead of next to each other */
+
+/*-------------------------------------------------------*/
+
+/* Style the footer */
+footer {
+  background-color: #777;
+  padding: 10px;
+  text-align: center;
+  color: white;
+}
+
+/* Responsive layout - makes the menu and the content (inside the section) sit on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  section {
+    -webkit-flex-direction: column;
+    flex-direction: column;
+  }
+  .column.side, .column.middle {
+    width: 100%;
+  }
+}
+</style>
+
+
+</head>
+<body>
+<header>
+  <h2 style="color:#D3D3D3">Red Team Vetting Tool</h2>
+</header>
+<p>Click on the buttons inside the tabbed menu:</p>
+
+<div class="tab">
+  <button class="tablinks" onclick="openCity(event, 'User')">User</button>
+  <button class="tablinks" onclick="openCity(event, 'Admin')">Admin</button>
+  <button class="tablinks" onclick="openCity(event, 'Super')">Super User</button>
+</div>
+
+<div id="User" class="tabcontent">
+  <h2>User Login</h2>
+    <p><form class="form" action="C:\Users\Student\Documents\rtvt_atom\user.html" method="post">
+        Username: <input type="text" placeholder="Enter Username" name="uname" required>
+        <h3> </h3>
+        Password: <input type="password" placeholder="Enter Password" name="psw" required> <br />
+        <h2>or</h2>
+        Cac Pin: <input name="Cacpin" type="text" />
+        <h3> </h3>
+       <button type="submit">Login</button>
+       <label>
+         <input type="checkbox" checked="checked" name="remember"> Remember me
+       </label>
+    </form></p>
+</div>
+
+<div id="Admin" class="tabcontent">
+  <h2>Administrator Login</h2>
+    <p><form class="form" action="C:\Users\Student\Documents\rtvt_atom\admin.html" method="post">
+        Username: <input type="text" placeholder="Enter Username" name="uname" required>
+        <h3> </h3>
+        Password: <input type="password" placeholder="Enter Password" name="psw" required> <br />
+        <h2>or</h2>
+        Cac Pin: <input name="Cacpin" type="text" />
+        <h3> </h3>
+       <button type="submit">Login</button>
+       <label>
+         <input type="checkbox" checked="checked" name="remember"> Remember me
+       </label>
+    </form></p>
+</div>
+
+<div id="Super" class="tabcontent">
+  <h2>Super User Login</h2>
+    <p><form class="form" action="super.html" method="post">
+        Username: <input type="text" placeholder="Enter Username" name="uname" required>
+        <h3> </h3>
+        Password: <input type="password" placeholder="Enter Password" name="psw" required> <br />
+        <h2>or</h2>
+        Cac Pin: <input name="Cacpin" type="text" />
+        <h3> </h3>
+       <button type="submit">Login</button>
+       <label>
+         <input type="checkbox" checked="checked" name="remember"> Remember me
+       </label>
+    </form></p>
+</div>
+
+    <div class="container" style="background-color:#f1f1f1">
+      <span class="psw">Forgot <a href="#">password?</a></span>
+    </div>
+
+    <div class="container" style="background-color:#ddd">
+      <span class="psw">Not a User?<a href="C:\Users\Student\Documents\rtvt_atom\newregister.html">Register Here!</a></span>
+    </div>
+<script>
+function openCity(evt, cityName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+</script>
+
+
+<footer>
+  <p>Product of AAMU</p>
+</footer>
+
+</body>
+</html>

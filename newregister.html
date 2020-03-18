@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>New User Registration</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+}
+
+
+/* Style the header */
+header {
+  background-color: #297EFF;
+  padding: 20px;
+  text-align: center;
+  font-size: 35px;
+  color: white;
+}
+
+/* Container for flexboxes */
+section {
+  display: -webkit-flex;
+  display: flex;
+}
+
+/* Style the navigation menu */
+nav {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  background: #ccc;
+  padding: 20px;
+}
+
+/* Style the list inside the menu */
+nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+/* Style the content */
+article {
+  -webkit-flex: 3;
+  -ms-flex: 3;
+  flex: 3;
+  background-color: #f1f1f1;
+  padding: 10px;
+}
+canvas {
+    border:1px solid #d3d3d3;
+    background-color: #f1f1f1;
+}
+
+
+/* Responsive layout - makes the menu and the content (inside the section) sit on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  section {
+    -webkit-flex-direction: column;
+    flex-direction: column;
+  }
+  .column.side, .column.middle {
+    width: 100%;
+  }
+}
+
+        *{
+            margin: 0px;
+            padding: 0px;
+            font-family: sans-serif;
+        }
+
+        body{
+            width: 100%;
+            height: 100%;
+            background: white;
+            background: linear-gradient(135deg, rgba(66,107,153,1) 0%, rgba(255,255,255,1) 74%);
+
+
+        }
+
+        .form-container{
+            width: 500px;
+            height: auto;
+            padding: 20px 30px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 5px 0 #000;
+            margin: auto;
+            margin-top: 30px;
+            }
+
+        ul.list{
+            list-style-type: none;
+            text-align: center;
+        }
+
+        ul.list li{
+            width: 300px;
+            margin-bottom: 10px;
+        }
+
+        ul.list li input{
+            width: 250px;
+            text-align: left;
+            padding: 10px 0px;
+            border-radius: 5px;
+        }
+
+        ul.list li input[type="button"]{
+            background-color: #426B99;
+            color: #FFF;
+            text-align: center;
+        }
+
+        .smaller{
+            max-width: 200px;
+            padding-left: 50px;
+        }
+
+        .center{
+            margin: auto;
+            text-align: center;
+        }
+/* Style the footer */
+footer {
+  background-color: #777;
+  padding: 10px;
+  text-align: center;
+  color: white;
+}
+</style>
+
+
+</head>
+<body>
+<header>
+  <h2 style="color:#D3D3D3">Red Team Vetting Tool</h2>
+</header>
+<div class="form-container">
+            <div class"center"><img class="smaller" src="https://media-exp1.licdn.com/dms/image/C4E1BAQFMYbUcaouyuA/company-background_10000/0?e=2159024400&v=beta&t=QyfymTF2h_7oiD2Buz4ipOUoYmOySs6ut4JOIFSAvQg"></div>
+            <ul class="list">
+                <li><h2>New User Registration</h2></li>
+                <li><input type="text" name="First Name" placeholder="  First Name"></li>
+                <li><input type="text" name="Last Name" placeholder="  Last Name"></li>
+                <li><input type="text" name="Username" placeholder="  Username"></li>
+                <li><input type="text" name="Password" placeholder="  Password"></li>
+                <li><input type="text" name="Confirm" placeholder="  Confirm"></li>
+                <li><h5>and</h5></li>
+                <li><input type="password" name="CAC Pin" placeholder="  CAC Pin"></li>
+                <li><input type="button" name="Submit" value="Register"></li>
+                <li class="sign"><a href="C:\Users\Student\Documents\rtvt_atom\rtvt.html">Sign in instead</a></li>
+            </ul>
+        </div>
+<br>
+
+<footer>
+  <p>Product of AAMU</p>
+</footer>
+
+</body>
+</html>
